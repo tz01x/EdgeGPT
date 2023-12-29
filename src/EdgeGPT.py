@@ -7,7 +7,6 @@ import argparse
 import asyncio
 import json
 import os
-import random
 import ssl
 import uuid
 from enum import Enum
@@ -25,13 +24,14 @@ from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.history import InMemoryHistory
 from rich.live import Live
 from rich.markdown import Markdown
+import secrets
 
 DELIMITER = "\x1e"
 
 
 # Generate random IP between range 13.104.0.0/14
 FORWARDED_IP = (
-    f"13.{random.randint(104, 107)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
+    f"13.{secrets.SystemRandom().randint(104, 107)}.{secrets.SystemRandom().randint(0, 255)}.{secrets.SystemRandom().randint(0, 255)}"
 )
 
 HEADERS = {
